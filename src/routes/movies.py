@@ -3,9 +3,9 @@ from fastapi import APIRouter, Depends, HTTPException, Query, status, Background
 from sqlalchemy import or_, func, and_
 from sqlalchemy.exc import IntegrityError
 from sqlalchemy.orm import joinedload, selectinload
-from config import get_current_user_id, get_email_notificator
-from database import get_db
-from database.models import (
+from src.config import get_current_user_id, get_email_notificator
+from src.database import get_db
+from src.database.models import (
     User,
     UserGroupEnum,
     Movie,
@@ -21,8 +21,8 @@ from database.models import (
     Rating,
     OrderItem,
 )
-from notifications import EmailSenderInterface
-from schemas.movies import (
+from src.notifications import EmailSenderInterface
+from src.schemas.movies import (
     MovieListItemSchema,
     MovieListResponseSchema,
     MovieDetailSchema,

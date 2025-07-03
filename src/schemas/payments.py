@@ -2,7 +2,7 @@ from decimal import Decimal
 from datetime import datetime
 from typing import List, Optional
 from pydantic import BaseModel, ConfigDict
-from database.models import PaymentStatus
+from src.database.models import PaymentStatus
 
 
 class PaymentItemCreate(BaseModel):

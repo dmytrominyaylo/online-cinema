@@ -6,9 +6,9 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.future import select
 import stripe
 from sqlalchemy.orm import selectinload
-from notifications import EmailSenderInterface
-from schemas.payments import PaymentCreate, PaymentResponse, PaymentItemResponse
-from database.models import (
+from src.notifications import EmailSenderInterface
+from src.schemas.payments import PaymentCreate, PaymentResponse, PaymentItemResponse
+from src.database.models import (
     Order,
     User,
     Payment,
@@ -16,9 +16,9 @@ from database.models import (
     PaymentItem,
     OrderItem,
 )
-from config.dependencies import get_current_user_id, get_email_notificator
-from database import get_db
-from config import settings as settings
+from src.config.dependencies import get_current_user_id, get_email_notificator
+from src.database import get_db
+from src.config import settings as settings
 
 router = APIRouter()
 

@@ -5,12 +5,12 @@ from sqlalchemy.future import select
 from sqlalchemy.orm import joinedload, selectinload
 from sqlalchemy import delete
 from datetime import datetime, timezone
-from config.dependencies import get_current_user_id
-from database.models.orders import OrderItem, Order
-from database import get_db
-from database.models.carts import Cart, CartItem
-from database.models.movies import Movie
-from schemas.carts import CartResponseSchema, CartItemResponseSchema
+from src.config.dependencies import get_current_user_id
+from src.database.models.orders import OrderItem, Order
+from src.database import get_db
+from src.database.models.carts import Cart, CartItem
+from src.database.models.movies import Movie
+from src.schemas.carts import CartResponseSchema, CartItemResponseSchema
 from fastapi import status
 
 router = APIRouter()

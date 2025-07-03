@@ -6,9 +6,9 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import select
 from typing import cast
 from sqlalchemy.orm import selectinload
-from config import BaseAppSettings
-from database import get_db
-from database.models import (
+from src.config import BaseAppSettings
+from src.database import get_db
+from src.database.models import (
     User,
     UserGroup,
     UserGroupEnum,
@@ -16,15 +16,15 @@ from database.models import (
     RefreshToken,
     PasswordResetToken,
 )
-from exceptions import BaseSecurityError
-from notifications import EmailSenderInterface
-from config.dependencies import (
+from src.exceptions import BaseSecurityError
+from src.notifications import EmailSenderInterface
+from src.config.dependencies import (
     get_email_notificator,
     get_settings,
     get_jwt_auth_manager,
     get_current_user_id,
 )
-from schemas.accounts import (
+from src.schemas.accounts import (
     UserRegistrationResponseSchema,
     UserRegistrationRequestSchema,
     UserActivationRequestSchema,
@@ -37,7 +37,7 @@ from schemas.accounts import (
     TokenRefreshResponseSchema,
     TokenRefreshRequestSchema,
 )
-from security.interfaces import JWTAuthManagerInterface
+from src.security.interfaces import JWTAuthManagerInterface
 
 router = APIRouter()
 BASE_URL = "http://127.0.0.1/accounts"

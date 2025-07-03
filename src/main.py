@@ -1,7 +1,7 @@
 import os
 import uvicorn
 from fastapi import FastAPI
-from routes import (
+from src.routes import (
     accounts_router,
     profiles_router,
     movies_router,
@@ -14,8 +14,8 @@ if "ENVIRONMENT" not in os.environ:
     os.environ["ENVIRONMENT"] = "local"
 
 app = FastAPI(
-    title="Online cinema",
-    description="Online Cinema project based on FastAPI and SQLAlchemy",
+    title="Cinema",
+    description="Online Cinema — FastAPI project for managing movies",
 )
 
 app.include_router(accounts_router, prefix="/accounts", tags=["accounts"])

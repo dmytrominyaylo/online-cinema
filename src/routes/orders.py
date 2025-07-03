@@ -1,28 +1,28 @@
 from fastapi import APIRouter, HTTPException, Depends, Query
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.future import select
-from database import get_db
-from database.models.orders import OrderStatus
-from schemas.orders import (
+from src.database import get_db
+from src.database.models.orders import OrderStatus
+from src.schemas.orders import (
     OrderResponseSchema,
     OrderItemResponseSchema,
     OrderWithMoviesResponseSchema,
     OrderListResponseSchema,
 )
-from database.models import (
+from src.database.models import (
     Order,
     OrderItem,
     Movie,
     User,
 )
-from config import get_current_user_id
+from src.config import get_current_user_id
 from fastapi import status
 from sqlalchemy.exc import SQLAlchemyError
 from sqlalchemy.orm import joinedload
 from sqlalchemy import func
 from typing import Optional
 from datetime import datetime
-from routes.carts import fetch_existing_cart
+from src.routes.carts import fetch_existing_cart
 
 router = APIRouter()
 

@@ -1,7 +1,7 @@
 from datetime import date, datetime
 from typing import List, Optional
 from pydantic import BaseModel, Field, ConfigDict, model_validator
-from schemas.movies import GenreSchema
+from src.schemas.movies import GenreSchema
 
 
 class MovieInCartSchema(BaseModel):

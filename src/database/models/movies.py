@@ -11,8 +11,9 @@ from sqlalchemy import (
     Integer,
 )
 from sqlalchemy.orm import mapped_column, Mapped, relationship
-from . import Base, User
-from . orders import OrderItem
+from src.database.base import Base
+from .accounts import User
+from .orders import OrderItem
 
 MoviesGenres = Table(
     "movie_genres",

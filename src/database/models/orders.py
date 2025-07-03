@@ -1,13 +1,15 @@
 from datetime import datetime
 from decimal import Decimal
 from enum import Enum as PyEnum
+from typing import List, TYPE_CHECKING
 from sqlalchemy import Integer, ForeignKey, String, DECIMAL, DateTime, func, Enum
 from sqlalchemy.orm import relationship, Mapped, mapped_column
-from typing import List
-from . import Base
-from .accounts import User
-from .payments import Payment, PaymentItem
-from .movies import Movie
+from src.database.base import Base
+
+if TYPE_CHECKING:
+    from src.database.models.accounts import User
+    from src.database.models.payments import Payment, PaymentItem
+    from src.database.models.movies import Movie
 
 
 class OrderStatus(PyEnum):

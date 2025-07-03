@@ -1,6 +1,6 @@
 from typing import Literal
 from pydantic import BaseModel, EmailStr, field_validator, ConfigDict
-from database import accounts_validators
+from src.database import accounts_validators
 
 
 class BaseEmailPasswordSchema(BaseModel):

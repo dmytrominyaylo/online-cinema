@@ -2,7 +2,7 @@ import datetime
 from typing import List
 from sqlalchemy import ForeignKey, UniqueConstraint
 from sqlalchemy.orm import Mapped, mapped_column, relationship
-from . import Base
+from src.database.base import Base
 from .accounts import User
 from .movies import Movie
 

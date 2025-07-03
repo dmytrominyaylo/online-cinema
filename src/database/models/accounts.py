@@ -14,12 +14,12 @@ from sqlalchemy import (
     UniqueConstraint,
 )
 from sqlalchemy.orm import Mapped, mapped_column, relationship, validates
-from . import Base
-from .orders import Order
-from .payments import Payment
-from database.validators import accounts as validators
-from security.passwords import hash_password, verify_password
-from security.utils import generate_secure_token
+from src.database.base import Base
+from src.database.validators import accounts as validators
+from src.security.passwords import hash_password, verify_password
+from src.security.utils import generate_secure_token
+from src.database.models.orders import Order
+from src.database.models.payments import Payment
 
 
 class UserGroupEnum(str, enum.Enum):
