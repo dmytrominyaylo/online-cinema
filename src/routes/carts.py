@@ -38,7 +38,7 @@ async def get_cart_by_user(user_id: int, db: AsyncSession) -> Cart:
         # We need to flush here to get the 'id' for the new cart object
         # but NOT commit, so the transaction is managed by the caller.
         await db.flush()
-        await db.refresh(cart) # Refresh to load default values if needed, after flushing
+        await db.refresh(cart)  # Refresh to load default values if needed, after flushing
 
     return cart
 
@@ -76,8 +76,12 @@ async def view_cart(
 
 
 @router.post("/{movie_id}/add", response_model=CartItemResponseSchema)
-async def add_movie(movie_id: int, db: AsyncSession = Depends(get_db), user_id: int = Depends(get_current_user_id)) -> CartItemResponseSchema:
-    """Add a movie to the user's cart, ensuring it's not already purchased."""
+async def add_movie(
+        movie_id: int,
+        db: AsyncSession = Depends(get_db),
+        user_id: int = Depends(get_current_user_id)
+) -> CartItemResponseSchema:
+
     try:
         cart = await get_cart_by_user(user_id, db)
 
@@ -102,14 +106,21 @@ async def add_movie(movie_id: int, db: AsyncSession = Depends(get_db), user_id: 
 
         # async with db.begin():
         cart_item = CartItem(
-            cart_id=cart.id, movie_id=movie_id, added_at=datetime.now(timezone.utc).replace(tzinfo=None)
+            cart_id=cart.id,
+            movie_id=movie_id,
+            added_at=datetime.now(timezone.utc).replace(tzinfo=None)
         )
         db.add(cart_item)
         # await db.flush()
         await db.commit()
         await db.refresh(cart_item)
 
-        return CartItemResponseSchema(id=cart_item.id, cart_id=cart_item.cart_id, movie=movie, added_at=cart_item.added_at)
+        return CartItemResponseSchema(
+            id=cart_item.id,
+            cart_id=cart_item.cart_id,
+            movie=movie,
+            added_at=cart_item.added_at
+        )
 
     except HTTPException as http_error:
         raise http_error

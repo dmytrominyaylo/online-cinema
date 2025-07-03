@@ -85,8 +85,10 @@ async def get_orders(
         try:
             query = query.filter(Order.status == OrderStatus(status))
         except ValueError:
-            raise HTTPException(status_code=400, detail=f"Invalid status: '{status}'. Possible values: pending, paid, canceled.")
-
+            raise HTTPException(
+                status_code=400,
+                detail=f"Invalid status: '{status}'. Possible values: pending, paid, canceled."
+            )
 
     if user_id:
         query = query.filter(Order.user_id == user_id)
@@ -374,7 +376,7 @@ async def cancel_order(
         id=order.id,
         user_id=order.user_id,
         created_at=order.created_at,
-        status=order.status, # type: ignore
+        status=order.status,  # type: ignore
         total_amount=order.total_amount,
         items=order_items_response,
     )
