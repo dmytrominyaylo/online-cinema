@@ -5,6 +5,9 @@ from sqlalchemy import Integer, ForeignKey, String, DECIMAL, DateTime, func, Enu
 from sqlalchemy.orm import relationship, Mapped, mapped_column
 from typing import List
 from . import Base
+from .accounts import User
+from .payments import Payment, PaymentItem
+from .movies import Movie
 
 
 class OrderStatus(PyEnum):

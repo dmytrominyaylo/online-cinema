@@ -5,6 +5,8 @@ from sqlalchemy import Integer, ForeignKey, DateTime, Numeric, Enum, String, fun
 from sqlalchemy.orm import relationship, Mapped, mapped_column
 from . import Base
 from typing import List
+from .orders import OrderItem, Order
+from .accounts import User
 
 
 class PaymentStatus(enum.Enum):
